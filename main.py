@@ -26,7 +26,7 @@ def removeHosts():
     hosts_manager.write(hosts_path)
 
 def addHosts():
-    for hostname, target in zip(config['hostsmanager']['hostnames'], config['hostsmanager']['targets']):
+    for hostname, target in config.items("rules"):
         hosts_manager.set_one(hostname, target)
     hosts_manager.write(hosts_path)
 
