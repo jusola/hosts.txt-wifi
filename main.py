@@ -20,17 +20,14 @@ print(hosts_path)
 iface = wifi.Wifi()
 hosts_manager = hosts.Hosts(hosts_path)
 
-while True:
-    curSSID = iface.getSSID()
-    if (not curSSID is None):
-        if(curSSID == config['hostsmanager']['SSID']):
-            hosts_manager.set_one(config['hostsmanager']['hostname'], config['hostsmanager']['target'])
-            hosts_manager.write(hosts_path)
-        else:
-            hosts_manager.remove_one(config['hostsmanager']['host'], False)
-            hosts_manager.write(hosts_path)
+curSSID = iface.getSSID()
+if (not curSSID is None):
+    if(curSSID == config['hostsmanager']['SSID']):
+        hosts_manager.set_one(config['hostsmanager']['hostname'], config['hostsmanager']['target'])
+        hosts_manager.write(hosts_path)
     else:
         hosts_manager.remove_one(config['hostsmanager']['host'], False)
         hosts_manager.write(hosts_path)
-
-    time.sleep(30)
+else:
+    hosts_manager.remove_one(config['hostsmanager']['host'], False)
+    hosts_manager.write(hosts_path)
