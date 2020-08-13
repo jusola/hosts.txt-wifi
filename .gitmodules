@@ -1,0 +1,3 @@
+[submodule "hosts"]
+	path = hosts
+	url = https://github.com/jusola/hosts.git
