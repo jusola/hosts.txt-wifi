@@ -5,6 +5,7 @@ import time
 import os
 
 
+
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -15,7 +16,6 @@ elif os.name == 'posix':
 else:
     raise Exception('Unsupported OS: %s' % os.name)
 
-print(hosts_path)
 
 iface = wifi.Wifi()
 hosts_manager = hosts.Hosts(hosts_path)
